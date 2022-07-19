@@ -11,7 +11,7 @@ describe("Test Contact US from via WebdriverUni", () => {
     cy.visit("http://www.webdriveruniversity.com/");
     cy.get("#contact-us").invoke("removeAttr", "target").click({ force: true });
   });
-  it("should be able to submit a successful submission contact us form", () => {
+  it.only("should be able to submit a successful submission contact us form", () => {
     //cypress code
     // cy.visit("http://www.webdriveruniversity.com/Contact-Us/contactus.html");
     // cy.visit("http://www.webdriveruniversity.com/");
@@ -25,6 +25,14 @@ describe("Test Contact US from via WebdriverUni", () => {
     cy.get("textarea.feedback-input").type("hola");
     cy.get('[type="submit"]').click();
     cy.get("h1").should("have.text", "Thank You for your Message!");
+    cy.webDriverUni_ContactFormSubmission(
+      data.first_name,
+      data.last_name,
+      data.email,
+      "hola",
+      "h1",
+      "Thank You for your Message!"
+    );
   }),
     it("should not be able to submit a successful submission contact us form as all fields are required", () => {
       // cy.visit("http://www.webdriveruniversity.com/Contact-Us/contactus.html");
