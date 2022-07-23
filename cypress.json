@@ -1,1 +1,8 @@
-{}
+{
+  "baseUrl": "http://www.webdriveruniversity.com/",
+
+  "env": {
+    "first_name": "John",
+    "webDriverUni_homePage": "http://www.webdriveruniversity.com/"
+  }
+}
