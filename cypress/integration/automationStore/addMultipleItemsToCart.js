@@ -1,21 +1,19 @@
 /// <reference types="Cypress"/>
-
+import addMultipleItemsToCart from "./../../support/pageObjects/automatioStore/addMultipleItemsToCart";
+import addHairCareToBasket_PO from "./../../support/pageObjects/automatioStore/addHairCareToBasket";
 describe("add multples items to cart", () => {
+  const multipleItemsToCart = new addMultipleItemsToCart();
+  const addHairCareToBaskest = new addHairCareToBasket_PO();
   before(() => {
     cy.fixture("products").then((data) => {
       globalThis.data = data;
     });
   }),
     beforeEach(() => {
-      cy.visit("https://automationteststore.com/");
-      cy.get("a[href *= 'product/category&path=']")
-        .contains("Hair Care")
-        .click();
+      multipleItemsToCart.accessHomePage();
+      multipleItemsToCart.clickhairCareLink();
     }),
     it("Add specified items to cart", () => {
-      globalThis.data.productName.forEach((element) => {
-        cy.addToCart(element);
-      });
-      cy.get(".dropdown-toggle > .fa").click();
+      addHairCareToBaskest.addHairCareToBaskest();
     });
 });
